@@ -5,10 +5,10 @@ rc="\033[0;31m"
 nc="\033[0m"
 bold="\033[1m"
 
-libs=('opencv','glfw')
-gitrepos=('https://github.com/opencv/opencv.git','https://github.com/glfw/glfw.git')
-flags=('-DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=/usr/local','')
-for ((i=0;i<=${#libs};i++)) do
+libs=('opencv' 'glfw')
+gitrepos=('https://github.com/opencv/opencv.git' 'https://github.com/glfw/glfw.git')
+flags=('-DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=/usr/local' '')
+for ((i=1;i<=${#libs};i++)) do
  echo $c1"Setting up$c2$bold $libs[$i]$nc"
  echo $c1"git clone $c2$gitrepos[$i]$nc" && git clone $gitrepos[$i]
  echo "cd $libs[$i]" && cd $libs[$i]
