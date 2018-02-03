@@ -1,6 +1,7 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 CMakeFiles
 CMakeScripts
+CMakeCache.txt
 Testing
 Makefile
 cmake_install.cmake
@@ -9,6 +10,7 @@ compile_commands.json
 CTestTestfile.cmake
 glfw
 opencv
+*.log
 # dependencies
 node_modules
 
