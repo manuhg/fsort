@@ -5,9 +5,32 @@ rc="\033[0;31m"
 nc="\033[0m"
 bold="\033[1m"
 
+if [ -f /etc/os-release ]; then
+    # freedesktop.org and systemd
+    . /etc/os-release
+    OS=$NAME
+    VER=$VERSION_ID
+elif type lsb_release >/dev/null 2>&1; then
+    # linuxbase.org
+    OS=$(lsb_release -si)
+    VER=$(lsb_release -sr)
+elif [ -f /etc/lsb-release ]; then
+    # For some versions of Debian/Ubuntu without lsb_release command
+    . /etc/lsb-release
+    OS=$DISTRIB_ID
+    VER=$DISTRIB_RELEASE
+fi
+echo "It seems you are running$c1 $OS$nc"
+if [ $OS == "Arch Linux" ]
+    pacaur -Syu glfw-x11 cmake ccv opencv
+elif  [ $OS == "Ubuntu" ]
+   apt-get update && apt-get install 
+fi
+
 libs=('opencv' 'glfw')
 gitrepos=('https://github.com/opencv/opencv.git' 'https://github.com/glfw/glfw.git')
 flags=('-DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=/usr/local' '')
+
 for ((i=1;i<=${#libs};i++)) do
  echo $c1"Setting up$c2$bold $libs[$i]$nc"
  echo $c1"git clone $c2$gitrepos[$i]$nc" && git clone $gitrepos[$i]
