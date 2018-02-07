@@ -21,9 +21,9 @@ elif [ -f /etc/lsb-release ]; then
     VER=$DISTRIB_RELEASE
 fi
 echo "It seems you are running$c1 $OS$nc"
-if [ $OS == "Arch Linux" ]
+if [ $OS == "Arch Linux" ]; then
     pacaur -Syu glfw-x11 cmake ccv opencv
-elif  [ $OS == "Ubuntu" ]
+elif  [ $OS == "Ubuntu" ]; then
    apt-get update && apt-get install 
 fi
 
