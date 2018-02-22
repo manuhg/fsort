@@ -12,7 +12,7 @@ using namespace std;
 using namespace cv;
 vector<vector<uchar>> images;
 void loadImages(vector<string> files) {
-  int n = files.size();
+  int a,n = files.size();
   cout << "\nNo of files: " << n;
   // for (int i = 0; i < n; i++)
   //   cout << "\n" << files[i];
@@ -45,10 +45,10 @@ void loadImages(vector<string> files) {
   if(fd==-1)
     perror("open");
   else
-  {
-    int bytes=0;
-    //write(fd,im.data,im.)
-  }
+    {
+      int bytes=0;
+      //write(fd,im.data,im.)
+    }
   // ofstream dDfile("dump.data",ios::binary|ios::out);
   // ostream_iterator<vector<vector<uchar>>> opIt(dDfile);
   // copy(images.begin(),images.end(),opIt);
@@ -84,5 +84,5 @@ int main(int argc, char **argv) {
   // imshow(argv[1], image);
   waitKey(0);
   cout << "\n";
-  return 0;
+  return 1;
 }
