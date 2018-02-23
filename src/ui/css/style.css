@@ -1,0 +1,19 @@
+.appbody
+{position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+
+	width: 90%;
+	height: 95%;
+	background-color:rgba(216,139,23,1);
+}
+.divitem
+{
+	width: 100px;
+	height: : 100px;
+	color:rgba(70, 164, 242,1);
+}
