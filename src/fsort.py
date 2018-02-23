@@ -2,6 +2,7 @@ import os,sys
 import numpy as np
 import tensorflow as tf
 from sklearn.manifold import TSNE as tsne
+from sklearn.decomposition import PCA
 FLAGS = tf.app.flags.FLAGS
 tf.app.flags.DEFINE_string(
     'model_dir', '/home/gk1000/imagenet', """Path to classify_image_graph_def.pb, """
@@ -37,7 +38,7 @@ def get_pool_arr(dir):
           predictions = sess.run(softmax_tensor, {'DecodeJpeg/contents:0': image_data})
           predictions = np.squeeze(predictions)          
           feature_tensor = sess.graph.get_tensor_by_name('pool_3:0')
-          #feature_set = sess.run(feature_tensor, {'DecodeJpeg/contents:0': image_data})
+          feature_set = sess.run(feature_tensor, {'DecodeJpeg/contents:0': image_data})
           val_lst=sess.run(feature_tensor)[0][0][0]
           pool_list.append(val_lst)
           flst.append(image)
@@ -46,9 +47,11 @@ def get_pool_arr(dir):
   return (flst,np.array(pool_list))
 
 def run_tsne(pool_arr):
-      ts_model=tsne(n_components=1,perplexity=30,n_iter=1000,learning_rate=200)
-      embeddings=ts_model.fit_transform(pool_arr)
-      return embeddings
+    #pca_m=PCA(n_components=1024)
+    pca_res=pool_arr#pca_m.fit_transform(pool_arr)
+    ts_model=tsne(n_components=1,perplexity=25,n_iter=1600,learning_rate=80)
+    embeddings=ts_model.fit_transform(pca_res)
+    return embeddings
 def fsort(dir):
     pool_info=get_pool_arr(dir)
     embeddings=run_tsne(pool_info[1])
@@ -76,7 +79,8 @@ def main(_):
             dname=sys.argv[i].split("/")
             if dname:
                 dname=dname[-1]
-            f=open(dname+".js","w")
+            #f=open(dname+".js","w")
+            f=open("flst.js","w")
             f.write(flist_html)
             f.close()
         except Exception as ee:
