@@ -36,7 +36,6 @@ void loadImages(vector<string> files) {
           tmpVec.insert(images[i].end(), im.ptr<uchar>(j), im.ptr<uchar>(j) + im.cols);
       }
       images.push_back(tmpVec);
-      
     }
     cout<<endl<<images[i].data();
     // im.total()*im.channels()
