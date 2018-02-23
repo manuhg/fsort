@@ -2,6 +2,7 @@ import os,sys
 import numpy as np
 import tensorflow as tf
 from sklearn.manifold import TSNE as tsne
+
 FLAGS = tf.app.flags.FLAGS
 tf.app.flags.DEFINE_string(
     'model_dir', '/home/gk1000/imagenet', """Path to classify_image_graph_def.pb, """
@@ -17,10 +18,10 @@ def create_graph():
     graph_def.ParseFromString(f.read())
     _ = tf.import_graph_def(graph_def, name='')
 
-def get_pool_arr(dir):
+
+def get_pool_lst(dir):
   create_graph()
   pool_list=[]
-  flst=[]
   with tf.Session() as sess:
     softmax_tensor = sess.graph.get_tensor_by_name('softmax:0')
     print("Dir:"+dir)
@@ -37,46 +38,31 @@ def get_pool_arr(dir):
           predictions = sess.run(softmax_tensor, {'DecodeJpeg/contents:0': image_data})
           predictions = np.squeeze(predictions)          
           feature_tensor = sess.graph.get_tensor_by_name('pool_3:0')
-          #feature_set = sess.run(feature_tensor, {'DecodeJpeg/contents:0': image_data})
-          val_lst=sess.run(feature_tensor)[0][0][0]
+          feature_set = sess.run(feature_tensor, {'DecodeJpeg/contents:0': image_data})
+          val_lst=sess.run(feature_tensor)[0][0][0].tolist()
           pool_list.append(val_lst)
-          flst.append(image)
       except Exception as e:
         print("\nException while generating pool list\n%r"%e)            
-  return (flst,np.array(pool_list))
+  return pool_list
 
-def run_tsne(pool_arr):
-      ts_model=tsne(n_components=1,perplexity=30,n_iter=1000,learning_rate=200)
-      embeddings=ts_model.fit_transform(pool_arr)
-      return embeddings
-def fsort(dir):
-    pool_info=get_pool_arr(dir)
-    embeddings=run_tsne(pool_info[1])
-    result={}
-    for k in range(len(embeddings)):
-        result[pool_info[0][k]]=embeddings[k].tolist()[0]
-    result=sorted([(v,k) for k,v in result.items() ])
-    flist_html='var flist=['
-    for (v,fname) in result:
-        comma=","
-        if fname==result[-1][1]:
-            comma=""
-        flist_html+="'"+fname+"'"+comma
-    flist_html+='];'
-    return flist_html
-
+def run_tsne(pool_lst):
+      #
 def main(_):
   if len(sys.argv) < 2:
     print("please provide a path to one or more images, e.g. images/* or images/*.jpg etc..")
     sys.exit()
   else:
+    output_dir = "image_vectors"
+    
     for i in range(1,len(sys.argv)):
-        flist_html=fsort(sys.argv[i])
-        try:
-            f=open(dir+".html","w")
-            f.write(flist_html)
+          pool_lst=get_pool_lst(sys.argv[i])
+          flst=run_tsne(pool_lst)
+          try:
+            f=open("flst.txt","wb")
+            f.write(flst)
             f.close()
-        except Exception as ee:
-            print("Exception:%r"%ee)    
+          except Exception as ee:
+            print("Exception:%r"%ee)
+
 if __name__ == '__main__':
   tf.app.run()
