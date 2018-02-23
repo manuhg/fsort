@@ -73,7 +73,10 @@ def main(_):
     for i in range(1,len(sys.argv)):
         flist_html=fsort(sys.argv[i])
         try:
-            f=open(dir+".html","w")
+            dname=sys.argv[i].split("/")
+            if dname:
+                dname=dname[-1]
+            f=open(dname+".js","w")
             f.write(flist_html)
             f.close()
         except Exception as ee:
