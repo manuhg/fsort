@@ -1,5 +1,5 @@
 //#include <GLFW/glfw3.h>
-//#include <opencv2/opencv.hpp>
+#include <opencv2/opencv.hpp>
 #include <stdio.h>
 #include <string>
 #include <iostream>

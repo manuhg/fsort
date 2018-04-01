@@ -10,7 +10,7 @@ from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 # class fsort:
 FLAGS = tf.app.flags.FLAGS
 tf.app.flags.DEFINE_string(
-'model_dir', '/home/gk1000/devloka/imagenet', """Path to classify_image_graph_def.pb, """
+'model_dir', '/home/gk1000/dev/resources/imagenet', """Path to classify_image_graph_def.pb, """
 """imagenet_synset_to_human_label_map.txt, and """
 """imagenet_2012_challenge_label_map_proto.pbtxt.""")
 tf.app.flags.DEFINE_string('image_file', '', """Absolute path to image file.""")
