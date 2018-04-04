@@ -1,10 +1,12 @@
-cmake_minimum_required(VERSION 2.8)
-project (fsort)
-find_package(OpenCV REQUIRED)
-find_package(glfw3 3.2 REQUIRED)
-find_package(OpenGL REQUIRED)
-add_executable(fsort fsort.cpp)
-include_directories(${OPENGL_INCLUDE_DIR})
-target_link_libraries(fsort ${OpenCV_LIBS} /usr/lib/libglfw.so.3.2 ${OPENGL_gl_LIBRARY} ${OPENGL_glu_LIBRARY})
+cmake_minimum_required(VERSION 2.8.8)
 
+find_package(Caffe)
+include_directories(${Caffe_INCLUDE_DIRS})
+include_directories(${CMAKE_BUILD_DIR}../include)
+add_definitions(${Caffe_DEFINITIONS})
 
+file(GLOB CPP_FILES ./*.cpp)
+file(GLOB INCLUDES ./*.h)
+
+add_executable(fsort_fe ${INCLUDES} ${CPP_FILES})
+target_link_libraries(fsort_fe ${Caffe_LIBRARIES})

@@ -1,4 +1,3 @@
-//#include <GLFW/glfw3.h>
 #include <opencv2/opencv.hpp>
 #include <stdio.h>
 #include <string>
@@ -12,7 +11,7 @@
 #include <iostream>
 #include <iterator>
 using namespace std;
-namespace fs=std::filesystem
+namespace fs=std::filesystem;
 using namespace cv;
 vector<vector<uchar>> images;
 void loadimages(string dir)

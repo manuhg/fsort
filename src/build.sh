@@ -1,2 +1,2 @@
-#!/usr/bin/zsh
-cmake . && make -j4
+#!/bin/sh
+cmake . && echo "make -j8" && make -j8

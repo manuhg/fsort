@@ -27,9 +27,9 @@ elif  [ $OS == "Ubuntu" ]; then
    apt-get update && apt-get install 
 fi
 
-libs=('opencv' 'glfw')
-gitrepos=('https://github.com/opencv/opencv.git' 'https://github.com/glfw/glfw.git')
-flags=('-DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=/usr/local' '')
+libs=() # 'opencv' 'glfw')
+gitrepos=() # 'https://github.com/opencv/opencv.git' 'https://github.com/glfw/glfw.git')
+flags=() # '-DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=/usr/local' '')
 
 for ((i=1;i<=${#libs};i++)) do
  echo $c1"Setting up$c2$bold $libs[$i]$nc"
@@ -43,6 +43,8 @@ for ((i=1;i<=${#libs};i++)) do
  echo $rc"rm -rf $libs[$i]"$nc
  rm -rf $libs[$i]
 done
+
+./setup_caffe.sh
 
 [ -d bhtsne ] && echo $c2"bhtsne$nc already exists and will be removed\n"$rc"rm -rf bhtsne$nc"  && rm -rf bhtsne
 
@@ -61,3 +63,14 @@ mkdir lib && cp bhtsne/libbhtsne.a lib/
 echo "cp bhtsne/libbhtsne.a ->$c1 lib/libbhtsne.a"
 echo $rc"rm -rf bhtsne"
 rm -rf bhtsne
+
+echo "setting up ml_data"
+
+cd ml_data
+wget http://dl.caffe.berkeleyvision.org/bvlc_googlenet.caffemodel
+#mv bvlc_googlenet.caffemodel models/bvlc_googlenet/
+mkdir -p ilsvrc12
+cd ilsvrc12
+wget -c http://dl.caffe.berkeleyvision.org/caffe_ilsvrc12.tar.gz
+tar -xf caffe_ilsvrc12.tar.gz && rm -f caffe_ilsvrc12.tar.gz
+cd ../..
