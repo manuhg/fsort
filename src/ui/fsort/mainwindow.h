@@ -1,6 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#include <libfsort.h>
 #include <QMainWindow>
 #include <QtCore>
 #include <QtGui>
@@ -29,5 +29,6 @@ private:
     QStandardItemModel *model;
     QStringList files;
 };
+//vector<vector<double>> extract_embeddings(vector<string> image_files,int accuracy_level=_ACCURACY_LOW);
 
 #endif // MAINWINDOW_H

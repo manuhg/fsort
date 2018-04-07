@@ -38,7 +38,7 @@ void MainWindow::on_selectFolder_released()
 }
 void MainWindow::on_fsortfunc_released()
 {
-
+    //extract_embeddings(,1);
 }
 
 void MainWindow::on_imageFiles_released()

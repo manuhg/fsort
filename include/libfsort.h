@@ -5,6 +5,11 @@
   #define CPU_ONLY
 #endif
 #define _vec_ret
+
+#define _ACCURACY_LOW 1
+#define _ACCURACY_MEDIUM 2
+#define _ACCURACY_HIGH 3
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -44,6 +49,6 @@ public:
     void finish();
     ~tsne_wrapper();
 };
-vector<vector<double>> extract_embeddings(vector<string> image_files,int max_iters=1000); //add option to change batch size and and crop sizes
+vector<vector<double>> extract_embeddings(vector<string> image_files,int accuracy_level=_ACCURACY_LOW); //add option to change batch size and and crop sizes
 
 #endif

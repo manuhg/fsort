@@ -34,14 +34,12 @@
 #ifndef TSNE_H
 #define TSNE_H
 
-
 static inline double sign(double x) { return (x == .0 ? .0 : (x < .0 ? -1.0 : 1.0)); }
-
 
 class TSNE
 {    
 public:
-    void run(double* X, int N, int D, double* Y, int no_dims, double perplexity, double theta, bool runManually=false);
+    void run(double* X, int N, int D, double* Y, int no_dims, double perplexity, double theta, bool runManually=false,int max_iter=1000);
     void runIteration();
     bool load_data(double** data, int* n, int* d, int* no_dims, double* theta, double* perplexity, int* rand_seed);
     void save_data(double* data, int* landmarks, double* costs, int n, int d);
