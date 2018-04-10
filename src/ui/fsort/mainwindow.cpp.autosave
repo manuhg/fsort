@@ -40,6 +40,7 @@ void MainWindow::on_selectFolder_released()
 void MainWindow::on_fsortfunc_released()
 {
     points=extract_embeddings(vfiles,accuracy_level);
+     
 }
 
 void MainWindow::on_imageFiles_released()
