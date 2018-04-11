@@ -1,9 +1,17 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+#include "mappings.h"
 #include "libfsort.h"
 #include <QMainWindow>
 #include <QtCore>
 #include <QtGui>
+#include <iostream>
+#include<QFileDialog>
+#include<QFileIconProvider>
+#include<QIcon>
+
+using namespace std;
+
 namespace Ui {
 class MainWindow;
 }
@@ -30,8 +38,8 @@ private:
     QStandardItemModel *model;
     QStringList files;
     int accuracy_level;
-    QVector<double> points;
-    QVector<string> vfiles;
+    std::vector<std::vector<double>> points;
+    std::vector<string> image_files;
 };
 //vector<vector<double>> extract_embeddings(vector<string> image_files,int accuracy_level=_ACCURACY_LOW);
 #endif // MAINWINDOW_H

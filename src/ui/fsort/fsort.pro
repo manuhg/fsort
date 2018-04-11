@@ -25,13 +25,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    mappings.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    mappings.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    mappings.ui
 
 unix:!macx: LIBS += -L$$PWD/../../../lib/ -lfsort
 

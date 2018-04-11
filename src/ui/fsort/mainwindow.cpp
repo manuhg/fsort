@@ -1,9 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include<QDebug>
-#include<QFileDialog>
-#include<QFileIconProvider>
-#include<QIcon>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -33,13 +30,21 @@ void MainWindow::on_selectFolder_released()
        QIcon icon = iconprovider.icon(fileinfo);
        QStandardItem *s_item=new QStandardItem(icon,temp.at(i));
        model->appendRow(s_item);
+       image_files.push_back((dir+"/"+temp.at(i)).toStdString());
    }
        ui->listView->setModel(model);
 }
 
 void MainWindow::on_fsortfunc_released()
 {
-    points=extract_embeddings(vfiles,accuracy_level);
+  points=(extract_embeddings(image_files,accuracy_level));
+  /* on the click of segregate button
+   * a splash screen should start depending on the time the back end takes to complete.
+   * call the New Window with the Graphics View and pass the dictionary(QMAP class)  we create with keys as file names and values as the vector embeddings*/
+  /*create and object mappings <objname> = new mappings(pass the dictionary created);
+   * obj.setModal(true);
+   * obj.exec();*/
+  /*Another way showing the window*/
 }
 
 void MainWindow::on_imageFiles_released()
@@ -54,6 +59,7 @@ void MainWindow::on_imageFiles_released()
         QIcon icon = iconprovider.icon(fileinfo);
         QStandardItem *s_item=new QStandardItem(icon,temp.at(i));
         model->appendRow(s_item);
+        image_files.push_back((temp.at(i)).toStdString());
     }
     ui->listView->setModel(model);
 
