@@ -1,8 +1,8 @@
 #!/usr/bin/sh
 set -x
 [ -f ../lib/libfsort.a ] && rm libfsort.a
-mkdir -p ../include
-mkdir -p ../lib
+rm -rf ../lib
+cp -rapv ../../libfsort/lib ../
 cp ../../libfsort/src/build/libfsort.a ../lib/
 [ -d ../include ] && rm -rf ../include
 cp -rapv ../../libfsort/include ../
