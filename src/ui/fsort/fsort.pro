@@ -53,3 +53,5 @@ INCLUDEPATH += $$PWD/../../../include
 DEPENDPATH += $$PWD/../../../include
 
 unix:!macx: PRE_TARGETDEPS += $$PWD/../../../lib/libbhtsne.a
+
+unix: PKGCONFIG += opencv
