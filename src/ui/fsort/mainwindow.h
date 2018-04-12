@@ -37,7 +37,8 @@ private:
     Ui::MainWindow *ui;
     QStandardItemModel *model;
     QStringList files;
-    int accuracy_level;
+    int accuracy_level=1;
+    int no_of_files=0;
     std::vector<std::vector<double>> points;
     std::vector<string> image_files;
 };

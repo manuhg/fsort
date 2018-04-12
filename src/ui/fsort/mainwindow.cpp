@@ -22,6 +22,7 @@ void MainWindow::on_selectFolder_released()
    QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),"Desktop",QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
    QDir directory(dir);
    QStringList temp=directory.entryList(QStringList() << "*.jpg" << "*.JPG" <<"*.png" <<"*.PNG" <<"*.xpm" <<"*.XPM",QDir::Files);
+   no_of_files+=temp.size();
    for(i=0;i<temp.size();i++)
    {
        files.append(dir+"/"+temp.at(i));
@@ -38,6 +39,12 @@ void MainWindow::on_selectFolder_released()
 void MainWindow::on_fsortfunc_released()
 {
   points=(extract_embeddings(image_files,accuracy_level));
+  /*print the vector and see the output*/
+  QMap<QString,QVector<double>> map;
+  for(int i=0;i<no_of_files;i++)
+      map.insert(QString::fromStdString(image_files.at(i)),QVector<double>::fromStdVector(points[i]));
+  /*print the dictionary and see the output*/
+
   /* on the click of segregate button
    * a splash screen should start depending on the time the back end takes to complete.
    * call the New Window with the Graphics View and pass the dictionary(QMAP class)  we create with keys as file names and values as the vector embeddings*/
@@ -51,6 +58,7 @@ void MainWindow::on_imageFiles_released()
 {
     int i;
     QStringList temp=QFileDialog::getOpenFileNames(this,"Select Image Files","","Images (*.png *.xpm *.jpg *.JPG *.PNG *.XPM)");
+    no_of_files+=temp.size();
     files.append(temp);
     for(i=0;i<temp.size();i++)
     {
