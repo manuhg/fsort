@@ -44,7 +44,6 @@ public:
     tsne_wrapper(int op_dims=3, int max_iters=1000, double perplexity=30,double theta=0.5, bool normalize=true);
     vector<vector<double> > run(vector<vector<float> > data);
     vector<vector<double> > run_(vector<vector<float> > data, int op_dims=3,int max_iters=1000, double perplexity=30,double theta=0.5,bool normalize=true);
-    vector<vector<double>>  run(vector<string> image_files,int op_dims=3,int max_iters=1000, double perplexity=30,double theta=0.5,bool normalize=true);
     void finish();
     ~tsne_wrapper();
 };
