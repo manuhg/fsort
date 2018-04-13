@@ -39,19 +39,13 @@ void MainWindow::on_selectFolder_released()
 void MainWindow::on_fsortfunc_released()
 {
   points=(extract_embeddings(image_files,accuracy_level));
-  /*print the vector and see the output*/
   QMap<QString,QVector<double>> map;
   for(int i=0;i<no_of_files;i++)
       map.insert(QString::fromStdString(image_files.at(i)),QVector<double>::fromStdVector(points[i]));
-  /*print the dictionary and see the output*/
 
-  /* on the click of segregate button
-   * a splash screen should start depending on the time the back end takes to complete.
-   * call the New Window with the Graphics View and pass the dictionary(QMAP class)  we create with keys as file names and values as the vector embeddings*/
-  /*create and object mappings <objname> = new mappings(pass the dictionary created);
-   * obj.setModal(true);
-   * obj.exec();*/
-  /*Another way showing the window*/
+  output_window=new Mappings(this);
+  output_window->show();
+  hide();
 }
 
 void MainWindow::on_imageFiles_released()

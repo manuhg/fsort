@@ -13,7 +13,6 @@ class Mappings : public QDialog
 
 public:
     explicit Mappings(QWidget *parent = 0);
-    Mappings(/*recieve a dictionary when the object is invoked*/);
     ~Mappings();
 
 private:

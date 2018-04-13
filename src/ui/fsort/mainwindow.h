@@ -41,6 +41,7 @@ private:
     int no_of_files=0;
     std::vector<std::vector<double>> points;
     std::vector<string> image_files;
+    Mappings *output_window;
 };
 //vector<vector<double>> extract_embeddings(vector<string> image_files,int accuracy_level=_ACCURACY_LOW);
 #endif // MAINWINDOW_H
