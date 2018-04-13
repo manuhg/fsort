@@ -30,7 +30,8 @@ SOURCES += \
 
 HEADERS += \
         mainwindow.h \
-    mappings.h
+    mappings.h \
+    deps.h
 
 FORMS += \
         mainwindow.ui \

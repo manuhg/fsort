@@ -1,6 +1,6 @@
 #ifndef MAPPINGS_H
 #define MAPPINGS_H
-
+#include "deps.h"
 #include <QDialog>
 
 namespace Ui {
@@ -12,7 +12,7 @@ class Mappings : public QDialog
     Q_OBJECT
 
 public:
-    explicit Mappings(QWidget *parent = 0);
+    explicit Mappings(QWidget *parent=0,QMap<QString,QVector<double>> *map=nullptr) ;
     ~Mappings();
 
 private:

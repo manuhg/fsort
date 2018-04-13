@@ -1,14 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+#include "deps.h"
 #include "mappings.h"
-#include "libfsort.h"
-#include <QMainWindow>
-#include <QtCore>
-#include <QtGui>
-#include <iostream>
-#include<QFileDialog>
-#include<QFileIconProvider>
-#include<QIcon>
 
 using namespace std;
 
