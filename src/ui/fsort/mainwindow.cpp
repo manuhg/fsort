@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include<QDebug>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -43,7 +42,7 @@ void MainWindow::on_fsortfunc_released()
   for(int i=0;i<no_of_files;i++)
       map.insert(QString::fromStdString(image_files.at(i)),QVector<double>::fromStdVector(points[i]));
 
-  output_window=new Mappings(this);
+  output_window=new Mappings(this,&map);
   output_window->show();
   hide();
 }
