@@ -40,33 +40,10 @@ FORMS += \
 
 unix: CONFIG += link_pkgconfig
 unix: PKGCONFIG += opencv
-
-unix:!macx: LIBS += -L$$PWD/../../../lib/ -lfsort -lbhtsne -lcaffe -lcaffeproto  -lglog -lcblas -lgflags -lprotobuf -lm -lhdf5_hl -lhdf5 -lboost_system -lboost_filesystem -lboost_thread -llmdb -lleveldb
+#unix:!macx: LIBS += -L/usr/local/lib64 -lopencv_highgui opencv_videoio opencv_imgcodecs opencv_imgproc opencv_core
+unix:!macx: LIBS += -L$$PWD/../../../lib/ -lfsort -lbhtsne -lcaffe
+unix:!macx: LIBS += -L/usr/lib/ -L/usr/local/lib -lboost_system -lcaffeproto  -lglog -lcblas -lgflags -lprotobuf -lm -lhdf5_hl -lhdf5  -lboost_filesystem -lboost_thread -llmdb -lleveldb
 
 INCLUDEPATH += $$PWD/../../../include
 DEPENDPATH += $$PWD/../../../include
 
-#unix:!macx: PRE_TARGETDEPS += $$PWD/../../../lib/libfsort.a
-
-#unix:!macx: LIBS += -L$$PWD/../../../lib/ -lbhtsne
-
-#INCLUDEPATH += $$PWD/../../../include
-#DEPENDPATH += $$PWD/../../../include
-
-#unix:!macx: PRE_TARGETDEPS += $$PWD/../../../lib/libbhtsne.a
-
-#unix: PKGCONFIG += opencv
-
-#unix:!macx: LIBS += -L$$PWD/../../../lib/ -lcaffe
-
-#INCLUDEPATH += $$PWD/../../../include
-#DEPENDPATH += $$PWD/../../../include
-
-#unix:!macx: PRE_TARGETDEPS += $$PWD/../../../lib/libcaffe.a
-
-#unix:!macx: LIBS += -L$$PWD/../../../lib/ -lcaffeproto
-
-#INCLUDEPATH += $$PWD/../../../include
-#DEPENDPATH += $$PWD/../../../include
-
-#unix:!macx: PRE_TARGETDEPS += $$PWD/../../../lib/libcaffeproto.a
