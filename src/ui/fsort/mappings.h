@@ -12,7 +12,7 @@ class Mappings : public QDialog
     Q_OBJECT
 
 public:
-    explicit Mappings(QWidget *parent=0,QMap<QString,QVector<double>> *map=nullptr) ;
+    explicit Mappings(QWidget *parent=nullptr,QMap<QString,QVector<double>> *map=nullptr) ;
     ~Mappings();
 
 private:
