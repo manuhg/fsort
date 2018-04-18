@@ -4,7 +4,6 @@
 #ifndef CPU_ONLY
   #define CPU_ONLY
 #endif
-/* #define _vec_ret */
 
 #define _ACCURACY_LOW 1
 #define _ACCURACY_MEDIUM 2
