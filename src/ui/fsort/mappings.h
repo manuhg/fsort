@@ -20,6 +20,7 @@ private:
     QGraphicsScene *scene;
     QGraphicsPixmapItem* item;
     QMap<QString,QVector<double>>::Iterator i;
+    QPixmap* pixmap;
 };
 
 #endif // MAPPINGS_H

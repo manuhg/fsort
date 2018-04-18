@@ -13,5 +13,6 @@
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
 #include <QMapIterator>
+#include <QPixmap>
 #include "libfsort.h"
 #endif // DEPS_H
