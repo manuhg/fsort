@@ -17,6 +17,9 @@ public:
 
 private:
     Ui::Mappings *ui;
+    QGraphicsScene *scene;
+    QGraphicsPixmapItem* item;
+    QMap<QString,QVector<double>>::Iterator i;
 };
 
 #endif // MAPPINGS_H
