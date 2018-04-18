@@ -8,7 +8,7 @@ Mappings::Mappings(QWidget *parent,QMap<QString,QVector<double>> *map) :   QDial
     scene = new QGraphicsScene(this);
     ui->graphicsView->setScene(scene);
     //add  background image
-    pixmap=new QPixmap("/home/sensei/Pictures/error.png");
+    pixmap=new QPixmap(":/Images/Background_image.jpg");
     QGraphicsPixmapItem* BackGround=new QGraphicsPixmapItem(*pixmap);
     scene->addItem(BackGround);
     //add the images at respective x y coordinates

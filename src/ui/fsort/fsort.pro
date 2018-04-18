@@ -46,3 +46,6 @@ unix:!macx: LIBS += -L/usr/lib/ -L/usr/local/lib -lboost_system -lcaffeproto  -l
 
 INCLUDEPATH += $$PWD/../../../include
 DEPENDPATH += $$PWD/../../../include
+
+RESOURCES += \
+    resources.qrc
