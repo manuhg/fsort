@@ -46,6 +46,7 @@ public:
     void finish();
     ~tsne_wrapper();
 };
-vector<vector<double>> extract_embeddings(vector<string> image_files,int accuracy_level=_ACCURACY_LOW); //add option to change batch size and and crop sizes
+vector<vector<double>> extract_embeddings(vector<string> image_files,int accuracy_level=_ACCURACY_LOW,bool print_tsnepts=false);
+//add option to change batch size and and crop sizes
 
 #endif
