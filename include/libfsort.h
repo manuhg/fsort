@@ -40,13 +40,13 @@ private:
 
 public:
 
-    vector<vector<double>>  run(vector<vector<float>> data, int op_dims=3, int max_iters=1000, int num_threads=2,double perplexity=30, double theta=0.5, bool normalize=true);
-    vector<vector<double>>  run(vector<string> image_files, int op_dims=3, int max_iters=1000, double perplexity=30,int num_threads=2, double theta=0.5, bool normalize=true);
+    vector<vector<double>>  run(vector<vector<float>> data, int op_dims=3, int max_iters=1000, int num_threads=2,double perplexity=30, double theta=0.5,double amplify=50.0, bool normalize=false);
+   // vector<vector<double>>  run(vector<string> image_files, int op_dims=3, int max_iters=1000, double perplexity=30,int num_threads=2, double theta=0.5, bool normalize=false);
 
     void finish();
     ~tsne_wrapper();
 };
-vector<vector<double>> extract_embeddings(vector<string> image_files,int accuracy_level=_ACCURACY_LOW,bool print_tsnepts=false);
+vector<vector<double>> extract_embeddings(vector<string> image_files,int perplexity=30,int threads=3,bool print_tsnepts=false,float amplify=50.0,bool normalize=false);
 //add option to change batch size and and crop sizes
 
 #endif
