@@ -11,7 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = fsort
 TEMPLATE = app
 
-QMAKE_LFLAGS += -Wl,-rpath,"'$$ORIGIN/lib'"
+#QMAKE_LFLAGS += -Wl,-rpath,"'$$ORIGIN/lib'"
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -44,7 +44,7 @@ unix: CONFIG += link_pkgconfig
 unix: PKGCONFIG += opencv
 #unix:!macx: LIBS += -L/usr/local/lib64 -lopencv_highgui opencv_videoio opencv_imgcodecs opencv_imgproc opencv_core
 unix:!macx: LIBS += -L$$PWD/../../../lib/ -lfsort  -lcaffe -lbhtsne
-unix:!macx: LIBS += -L/usr/lib/ -L/usr/local/lib -lboost_system -lglog -lcblas -lgflags -lprotobuf -lm -lhdf5_hl -lhdf5  -lboost_filesystem -lboost_thread -llmdb -lleveldb
+unix:!macx: LIBS += -L /usr/lib/x86_64-linux-gnu/ -lboost_system -lglog -lcblas -lgflags -lprotobuf -lm -lhdf5_hl -lhdf5  -lboost_filesystem -lboost_thread -llmdb -lleveldb
 
 INCLUDEPATH += $$PWD/../../../include
 DEPENDPATH += $$PWD/../../../include

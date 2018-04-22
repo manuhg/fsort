@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 set -x
 [ -f ../lib/libfsort.a ] && rm libfsort.a
 rm -rf ../lib

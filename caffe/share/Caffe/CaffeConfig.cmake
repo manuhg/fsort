@@ -21,7 +21,7 @@
 
 if(ON)
   if(NOT OpenCV_FOUND)
-    set(Caffe_OpenCV_CONFIG_PATH "/usr/share/opencv")
+    set(Caffe_OpenCV_CONFIG_PATH "/usr/share/OpenCV")
     if(Caffe_OpenCV_CONFIG_PATH)
       get_filename_component(Caffe_OpenCV_CONFIG_PATH ${Caffe_OpenCV_CONFIG_PATH} ABSOLUTE)
 
