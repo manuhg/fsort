@@ -38,10 +38,7 @@ void MainWindow::on_fsortfunc_released()
 {
   int i;
   points=(extract_embeddings(image_files,30,3,false,80,false));
-//  for(i=0;i<no_of_files;i++)
-//       for(int j=0;j<2;j++)
-//           points[i][j]*=2000;
-  qInfo() << "\n"<<points<<"\nPlotting images..";
+ // qInfo() << "\n"<<points<<"\nPlotting images..";
   QMap<QString,QVector<double>> map;
   for(i=0;i<no_of_files;i++)
       map.insert(QString::fromStdString(image_files.at(i)),QVector<double>::fromStdVector(points[i]));
