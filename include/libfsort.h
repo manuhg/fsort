@@ -17,7 +17,7 @@
 #include <bhtsne/tsne.h>
 using namespace std;
 
-
+template<class Dtype> void display_vector_(vector<vector<Dtype>> f);
 vector<vector<float>> extract_features(int num_img_files);
 
 class tsne_wrapper
