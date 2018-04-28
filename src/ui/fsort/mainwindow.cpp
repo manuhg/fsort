@@ -37,7 +37,7 @@ void MainWindow::on_selectFolder_released()
 void MainWindow::on_fsortfunc_released()
 {
   int i;
-  points=(extract_embeddings(image_files,30,3,false,80,false));
+  points=(extract_embeddings(image_files,30,3,false,100,false));
  // qInfo() << "\n"<<points<<"\nPlotting images..";
   QMap<QString,QVector<double>> map;
   for(i=0;i<no_of_files;i++)
